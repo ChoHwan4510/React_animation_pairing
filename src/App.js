@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React, { Component, Fragment }  from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  state = {
+    number: 0
+  }
+  handleIncrease = () =>{
+    const {number} = this.state;
+    this.setState({
+      number : number+1
+    });
+  }
+
+  handleDecrease = () =>{
+    const {number} = this.state;
+    this.setState({
+      number : number -1
+    });
+  }
+  render(){
+    return(
+      <Fragment>
+        <div>
+          <h1>카운터</h1>
+          <div>값 : {this.state.number}</div>
+          <button onClick={this.handleIncrease}>+</button>
+          <button onClick={this.handleDecrease}>-</button>
+        </div> 
+      </Fragment>
+    );
+  }
 }
 
 export default App;
